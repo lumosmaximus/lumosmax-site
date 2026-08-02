@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>E-ink Display for Flipper Zero — Lumosmax</title>
+  <meta name="description" content="An e-ink display module for the Flipper Zero." />
+  <meta name="theme-color" content="#2d96bd" />
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='70'>L</text></svg>" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700;900&family=Fira+Code&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+  <link rel="stylesheet" href="../css/style.css" />
+</head>
+<body>
+  <header class="site">
+    <div class="wrap nav">
+      <a class="brand" href="../index.html">Lumosmax</a>
+      <nav class="nav-links">
+        <a href="../index.html" class="active">Projects</a>
+        <a href="../about.html">About</a>
+        <a href="../about.html#contact">Contact</a>
+        <button class="theme-toggle" aria-label="Toggle theme"><i class="fa-solid fa-moon"></i></button>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <div class="wrap">
+      <div class="single-head reveal">
+        <a class="back" href="../index.html"><i class="fa-solid fa-arrow-left"></i> All projects</a>
+        <h1>E-ink Display for Flipper Zero</h1>
+        <div class="single-meta">
+          <span><i class="fa-regular fa-calendar"></i>2026</span>
+          <span><i class="fa-regular fa-clock"></i>TODO min read</span>
+        </div>
+        <div class="tags">
+          <span class="tag">Embedded</span>
+          <span class="tag">IoT</span>
+          <span class="tag">Fun</span>
+        </div>
+      </div>
+
+      <article class="article reveal">
+        <!-- Fill these in when you're ready. Structure matches a Hackster submission. -->
+        <h2>Story</h2>
+        <p>TODO: what made you want an e-ink screen on the Flipper Zero, what it adds,
+           and what was tricky about getting a slow-refresh display to play nice with it.</p>
+
+        <div class="figure-placeholder">Hero photo of the module on the Flipper</div>
+
+        <h2>How it works</h2>
+        <p>TODO: how the e-ink panel connects (GPIO header / SPI), the driver, and how you
+           push frames to it.</p>
+        <ul>
+          <li>TODO: display panel and controller used</li>
+          <li>TODO: interface (SPI pins on the Flipper GPIO header)</li>
+          <li>TODO: firmware / app that drives it</li>
+        </ul>
+
+        <h2>Bill of materials</h2>
+        <ul>
+          <li>Flipper Zero — ×1</li>
+          <li>E-ink panel + controller — ×1 (TODO: part)</li>
+          <li>TODO: connector / carrier board / wiring</li>
+        </ul>
+
+        <h2>Schematics</h2>
+        <div class="figure-placeholder">Wiring / pinout diagram</div>
+
+        <h2>Code</h2>
+        <pre><code>// TODO: representative snippet (SPI init, frame push, refresh)
+// full source: link your GitHub repo below</code></pre>
+        <p><a href="https://github.com/" target="_blank" rel="noopener">View full source on GitHub <i class="fa-solid fa-arrow-up-right-from-square" style="font-size:.8em;"></i></a></p>
+
+        <h2>Result</h2>
+        <p>TODO: what it does now, refresh behavior, power draw, and what's next.</p>
+      </article>
+    </div>
+  </main>
+
+  <footer class="site">
+    <div class="wrap">
+      <div class="socials">
+        <a href="https://github.com/lumosmaximus" target="_blank" rel="noopener" aria-label="GitHub"><i class="fa-brands fa-github"></i></a>
+        <a href="https://www.linkedin.com/in/doraditya" target="_blank" rel="noopener" aria-label="LinkedIn"><i class="fa-brands fa-linkedin"></i></a>
+        <a href="mailto:info@lumosmax.dev" aria-label="Email"><i class="fa-solid fa-envelope"></i></a>
+      </div>
+      <div>© <span id="year"></span> Lumosmax</div>
+    </div>
+  </footer>
+
+  <script src="../js/main.js"></script>
+</body>
+</html>

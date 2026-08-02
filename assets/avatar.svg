@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="280" height="280" viewBox="0 0 280 280">
+  <defs>
+    <linearGradient id="g" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#2d96bd"/>
+      <stop offset="1" stop-color="#ef3982"/>
+    </linearGradient>
+  </defs>
+  <rect width="280" height="280" fill="url(#g)"/>
+  <text x="50%" y="50%" dy="0.35em" text-anchor="middle"
+        font-family="Lato, Arial, sans-serif" font-size="120" font-weight="700" fill="#ffffff">YN</text>
+</svg>

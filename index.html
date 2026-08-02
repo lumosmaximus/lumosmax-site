@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Lumosmax — Projects</title>
+  <meta name="description" content="Selected projects, things I've designed, built, and shipped." />
+  <meta name="theme-color" content="#2d96bd" />
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='70'>L</text></svg>" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700;900&family=Fira+Code&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+  <header class="site">
+    <div class="wrap nav">
+      <a class="brand" href="index.html">Lumosmax</a>
+      <nav class="nav-links">
+        <a href="index.html" class="active">Projects</a>
+        <a href="about.html">About</a>
+        <a href="about.html#contact">Contact</a>
+        <button class="theme-toggle" aria-label="Toggle theme"><i class="fa-solid fa-moon"></i></button>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <div class="wrap">
+      <div class="page-head reveal">
+        <h1>Projects</h1>
+        <p>Things I've designed, built, and shipped. Filter by category, or click a card for the full write-up.</p>
+      </div>
+
+      <!-- ===== FILTER BAR (categories) ===== -->
+      <div class="filter-bar reveal">
+        <button class="filter-btn active" data-filter="all">All Works</button>
+        <button class="filter-btn" data-filter="embedded">Embedded Systems</button>
+        <button class="filter-btn" data-filter="iot">IoT</button>
+        <button class="filter-btn" data-filter="robotics">Robotics</button>
+        <button class="filter-btn" data-filter="software">Software Development</button>
+        <button class="filter-btn" data-filter="fun">Fun</button>
+      </div>
+
+      <!-- ===== PROJECT GRID =====
+           To add a project: copy a .pcard block, set data-cats (space-separated
+           category keys from the buttons above), swap the cover, and point href
+           at its detail page. Replace the gradient cover with a real image like:
+           <div class="pcard-cover"><img src="assets/projects/name.jpg" alt=""></div>
+      -->
+      <section class="pgrid reveal">
+
+        <a class="pcard" data-cats="embedded iot fun" href="projects/eink-flipper.html">
+          <div class="pcard-cover" style="--c1:#2d96bd;--c2:#20303a;"><i class="fa-solid fa-microchip"></i></div>
+          <div class="pcard-body">
+            <h3>E-ink Display for Flipper Zero</h3>
+            <div class="pcard-tags"><span>Embedded</span><span>IoT</span><span>Fun</span></div>
+          </div>
+        </a>
+
+        <a class="pcard" data-cats="iot embedded" href="projects/sample-project.html">
+          <div class="pcard-cover" style="--c1:#3a7bd5;--c2:#2d96bd;"><i class="fa-solid fa-wifi"></i></div>
+          <div class="pcard-body">
+            <h3>Connected Sensor Node</h3>
+            <div class="pcard-tags"><span>IoT</span><span>Embedded</span></div>
+          </div>
+        </a>
+
+        <!-- Placeholder cards below show the categories in action. Replace or delete them. -->
+        <a class="pcard" data-cats="robotics" href="projects/_template.html">
+          <div class="pcard-cover" style="--c1:#ef6a3a;--c2:#c0392b;"><i class="fa-solid fa-robot"></i></div>
+          <div class="pcard-body">
+            <h3>Robotics project</h3>
+            <div class="pcard-tags"><span>Robotics</span></div>
+          </div>
+        </a>
+
+        <a class="pcard" data-cats="software" href="projects/_template.html">
+          <div class="pcard-cover" style="--c1:#6a5acd;--c2:#2d96bd;"><i class="fa-solid fa-code"></i></div>
+          <div class="pcard-body">
+            <h3>Software project</h3>
+            <div class="pcard-tags"><span>Software</span></div>
+          </div>
+        </a>
+
+      </section>
+    </div>
+  </main>
+
+  <footer class="site">
+    <div class="wrap">
+      <div class="socials">
+        <a href="https://github.com/lumosmaximus" target="_blank" rel="noopener" aria-label="GitHub"><i class="fa-brands fa-github"></i></a>
+        <a href="https://www.linkedin.com/in/doraditya" target="_blank" rel="noopener" aria-label="LinkedIn"><i class="fa-brands fa-linkedin"></i></a>
+        <a href="mailto:info@lumosmax.dev" aria-label="Email"><i class="fa-solid fa-envelope"></i></a>
+      </div>
+      <div>© <span id="year"></span> Lumosmax</div>
+    </div>
+  </footer>
+
+  <script src="js/main.js"></script>
+</body>
+</html>

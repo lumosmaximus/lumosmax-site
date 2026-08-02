@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Sample Project — Lumosmax</title>
+  <meta name="description" content="A connected sensor that reports readings to a live dashboard." />
+  <meta name="theme-color" content="#2d96bd" />
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='70'>L</text></svg>" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700;900&family=Fira+Code&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+  <link rel="stylesheet" href="../css/style.css" />
+</head>
+<body>
+  <header class="site">
+    <div class="wrap nav">
+      <a class="brand" href="../index.html">Lumosmax</a>
+      <nav class="nav-links">
+        <a href="../index.html" class="active">Projects</a>
+        <a href="../about.html">About</a>
+        <a href="../about.html#contact">Contact</a>
+        <button class="theme-toggle" aria-label="Toggle theme"><i class="fa-solid fa-moon"></i></button>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <div class="wrap">
+      <div class="single-head reveal">
+        <a class="back" href="../index.html"><i class="fa-solid fa-arrow-left"></i> All projects</a>
+        <h1>Sample Project</h1>
+        <div class="single-meta">
+          <span><i class="fa-regular fa-calendar"></i>2026</span>
+          <span><i class="fa-regular fa-clock"></i>3 min read</span>
+        </div>
+        <div class="tags">
+          <span class="tag">IoT</span>
+          <span class="tag">Monitoring</span>
+          <span class="tag">Data collection</span>
+        </div>
+      </div>
+
+      <article class="article reveal">
+        <h2>Story</h2>
+        <p>This is a worked example so you can see the layout. Replace it with your own
+           write-up. The structure mirrors what a strong Hackster.io submission includes:
+           a story, how it works, a bill of materials, schematics, and code.</p>
+        <p>Start with the spark — what problem nagged at you enough to build something.
+           Then the constraints you worked under, the dead ends, and the moment it
+           finally worked.</p>
+
+        <div class="figure-placeholder">Hero photo of the finished build</div>
+
+        <h2>How it works</h2>
+        <p>A microcontroller samples a sensor on a fixed interval, packages the reading,
+           and publishes it to a cloud endpoint over Wi-Fi. A dashboard subscribes to the
+           feed and renders it in near-real-time.</p>
+        <ul>
+          <li>Wake on timer, take a reading, timestamp it.</li>
+          <li>Publish the payload to the platform over a secure connection.</li>
+          <li>Dashboard visualizes the stream and fires an alert past a threshold.</li>
+        </ul>
+
+        <h2>Bill of materials</h2>
+        <ul>
+          <li>Microcontroller with Wi-Fi — ×1</li>
+          <li>Sensor module — ×1</li>
+          <li>LiPo battery + charger — ×1</li>
+          <li>Enclosure, wiring, connectors — as needed</li>
+        </ul>
+
+        <h2>Schematics</h2>
+        <div class="figure-placeholder">Wiring diagram</div>
+
+        <h2>Code</h2>
+        <pre><code>void loop() {
+  float reading = sensor.read();
+  client.publish("device/readings", format(reading));
+  esp_deep_sleep(SAMPLE_INTERVAL_US);
+}</code></pre>
+        <p><a href="https://github.com/" target="_blank" rel="noopener">View full source on GitHub <i class="fa-solid fa-arrow-up-right-from-square" style="font-size:.8em;"></i></a></p>
+
+        <h2>Result</h2>
+        <p>Runs for weeks on a single charge and surfaces issues before they become
+           problems. Next up: on-device buffering for offline resilience.</p>
+      </article>
+    </div>
+  </main>
+
+  <footer class="site">
+    <div class="wrap">
+      <div class="socials">
+        <a href="https://github.com/lumosmaximus" target="_blank" rel="noopener" aria-label="GitHub"><i class="fa-brands fa-github"></i></a>
+        <a href="https://www.linkedin.com/in/doraditya" target="_blank" rel="noopener" aria-label="LinkedIn"><i class="fa-brands fa-linkedin"></i></a>
+        <a href="mailto:info@lumosmax.dev" aria-label="Email"><i class="fa-solid fa-envelope"></i></a>
+      </div>
+      <div>© <span id="year"></span> Lumosmax</div>
+    </div>
+  </footer>
+
+  <script src="../js/main.js"></script>
+</body>
+</html>

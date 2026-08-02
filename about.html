@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>About — Lumosmax</title>
+  <meta name="description" content="Embedded systems engineer. Background, focus areas, and skills." />
+  <meta name="theme-color" content="#2d96bd" />
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='70'>L</text></svg>" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700;900&family=Fira+Code&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+  <header class="site">
+    <div class="wrap nav">
+      <a class="brand" href="index.html">Lumosmax</a>
+      <nav class="nav-links">
+        <a href="index.html">Projects</a>
+        <a href="about.html" class="active">About</a>
+        <a href="about.html#contact">Contact</a>
+        <button class="theme-toggle" aria-label="Toggle theme"><i class="fa-solid fa-moon"></i></button>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <!-- ============ PROFILE ============ -->
+    <section class="profile compact reveal">
+      <img class="avatar" src="assets/avatar.png" alt="Adi" />
+      <h1>Adi</h1>
+      <p class="subtitle"><span data-typing='["Firmware and embedded systems engineer.","From bare metal to production.","Industrial and wireless devices.","I like making hardware behave."]'></span></p>
+
+      <div class="socials">
+        <a href="https://github.com/lumosmaximus" target="_blank" rel="noopener" aria-label="GitHub"><i class="fa-brands fa-github"></i></a>
+        <a href="https://www.linkedin.com/in/doraditya" target="_blank" rel="noopener" aria-label="LinkedIn"><i class="fa-brands fa-linkedin"></i></a>
+        <a href="https://www.hackster.io/" target="_blank" rel="noopener" aria-label="Hackster"><i class="fa-solid fa-microchip"></i></a>
+        <a href="mailto:info@lumosmax.dev" aria-label="Email"><i class="fa-solid fa-envelope"></i></a>
+      </div>
+    </section>
+
+    <!-- ============ ABOUT ============ -->
+    <div class="wrap">
+      <section class="about reveal" id="about">
+        <p class="section-label">About</p>
+        <h2>A bit about me</h2>
+        <p>
+          I'm a firmware and embedded systems engineer. For years I've written the software
+          that runs industrial and wireless devices from the inside: RTOS and bare-metal
+          firmware, low-level drivers and board bring-up, and the low-power radio links that
+          keep data moving when the network and power supply won't cooperate.
+        </p>
+        <p>
+          I've taken products from a bare PCB all the way to production, chased down the field
+          failures nobody else could reproduce, and engineered the reliability that makes
+          hardware worth trusting. Along the way I've led cross-functional teams and shipped
+          everything from safety-critical instruments to battery-powered sensors that run for
+          years in the field. More on what I do below.
+        </p>
+      </section>
+    </div>
+
+    <!-- ============ WHAT I DO ============ -->
+    <div class="wrap">
+      <section class="reveal">
+        <p class="section-label">What I do</p>
+        <h2>Focus areas</h2>
+        <div class="focus">
+          <div class="item">
+            <div class="ficon"><i class="fa-solid fa-microchip"></i></div>
+            <h3>Firmware &amp; board bring-up</h3>
+            <p>RTOS and bare-metal firmware on ARM microcontrollers: drivers, ISRs, timers,
+               comms interfaces, and diagnostics that survive production. Also the unglamorous
+               part, bringing up a new board and checking power, signal paths, and I/O.</p>
+          </div>
+          <div class="item">
+            <div class="ficon"><i class="fa-solid fa-network-wired"></i></div>
+            <h3>IoT gateways &amp; edge integration</h3>
+            <p>Embedded Linux gateway apps that acquire, validate, buffer, and route device
+               data. I connect sensors, analyzers, flowmeters, and wireless devices over
+               industrial buses and MQTT, then keep the data flowing cleanly.</p>
+          </div>
+          <div class="item">
+            <div class="ficon"><i class="fa-solid fa-bug"></i></div>
+            <h3>Reliability &amp; field diagnostics</h3>
+            <p>Reproducing field failures across hardware, firmware, Linux, and the network,
+               then building in retry logic, stale-data prevention, watchdogs, power-cycle
+               recovery, and backup communication paths.</p>
+          </div>
+          <div class="item">
+            <div class="ficon"><i class="fa-solid fa-tower-broadcast"></i></div>
+            <h3>Low-power wireless</h3>
+            <p>Firmware for battery-powered LoRaWAN and sub-GHz devices, where every microamp
+               counts. Sleep-state management, sensor duty-cycling, power-budget work for long
+               deployments, plus RF validation and compliance.</p>
+          </div>
+          <div class="item">
+            <div class="ficon"><i class="fa-solid fa-gears"></i></div>
+            <h3>Test &amp; automation</h3>
+            <p>Python and Bash automation, manufacturing and calibration test rigs, and JSON
+               data pipelines. The kind of tooling that makes results repeatable and catches
+               defects before they ship.</p>
+          </div>
+          <div class="item">
+            <div class="ficon"><i class="fa-solid fa-wave-square"></i></div>
+            <h3>Lab &amp; debug</h3>
+            <p>At home on the bench with oscilloscopes, logic and spectrum analyzers,
+               JTAG/SWD, protocol sniffers, Wireshark, and SDR tools. Down to reading a
+               schematic and checking the assembly when something looks off.</p>
+          </div>
+          <div class="item">
+            <div class="ficon"><i class="fa-solid fa-brain"></i></div>
+            <h3>On-device ML</h3>
+            <p>TinyML and CNN-based classification on resource-constrained MCUs, so devices
+               can detect events and anomalies locally instead of streaming raw data upstream.</p>
+          </div>
+          <div class="item">
+            <div class="ficon"><i class="fa-solid fa-sliders"></i></div>
+            <h3>Control &amp; motion</h3>
+            <p>PID control loops and stepper motor drivers, plus high-rate 16-bit ADC/DAC
+               signal paths for systems that have to measure and react in real time.</p>
+          </div>
+        </div>
+      </section>
+    </div>
+
+    <!-- ============ SKILLS ============ -->
+    <div class="wrap">
+      <section class="reveal">
+        <p class="section-label">Skills</p>
+        <h2>What I work with</h2>
+
+        <div class="skill-group">
+          <h3>Embedded &amp; firmware</h3>
+          <div class="skills">
+            <span class="chip">RTOS</span>
+            <span class="chip">Bare metal</span>
+            <span class="chip">Event-driven</span>
+            <span class="chip">Peripheral drivers</span>
+            <span class="chip">BSP</span>
+            <span class="chip">ISRs</span>
+            <span class="chip">Timers</span>
+            <span class="chip">16-bit ADC / DAC (high-rate)</span>
+            <span class="chip">MEMS sensors</span>
+            <span class="chip">Low-power optimization</span>
+          </div>
+        </div>
+
+        <div class="skill-group">
+          <h3>MCUs &amp; processors</h3>
+          <div class="skills">
+            <span class="chip">STM32 (M7 · M4 · M3 · M0)</span>
+            <span class="chip">ESP32</span>
+            <span class="chip">MSP430 · MSP432</span>
+            <span class="chip">PIC18</span>
+            <span class="chip">TI C2000</span>
+            <span class="chip">DSPs</span>
+            <span class="chip">Microchip</span>
+          </div>
+        </div>
+
+        <div class="skill-group">
+          <h3>Edge ML &amp; signals</h3>
+          <div class="skills">
+            <span class="chip">TinyML</span>
+            <span class="chip">CNN classification</span>
+            <span class="chip">On-device inference</span>
+            <span class="chip">PID control</span>
+            <span class="chip">Stepper motor drivers</span>
+          </div>
+        </div>
+
+        <div class="skill-group">
+          <h3>Linux &amp; IoT gateways</h3>
+          <div class="skills">
+            <span class="chip">Embedded Linux</span>
+            <span class="chip">Data acquisition</span>
+            <span class="chip">Buffering &amp; routing</span>
+            <span class="chip">Local MQTT brokers</span>
+            <span class="chip">Node-RED</span>
+            <span class="chip">Remote troubleshooting</span>
+          </div>
+        </div>
+
+        <div class="skill-group">
+          <h3>Connectivity &amp; protocols</h3>
+          <div class="skills">
+            <span class="chip">I2C · SPI · UART</span>
+            <span class="chip">CAN · USB</span>
+            <span class="chip">RS232 · RS485</span>
+            <span class="chip">Modbus TCP/RTU</span>
+            <span class="chip">EtherNet/IP</span>
+            <span class="chip">TCP/IP · Ethernet</span>
+            <span class="chip">MQTT / Sparkplug</span>
+            <span class="chip">Bluetooth LE</span>
+            <span class="chip">LoRa / LoRaWAN</span>
+            <span class="chip">Sigfox</span>
+            <span class="chip">Cellular / LTE</span>
+          </div>
+        </div>
+
+        <div class="skill-group">
+          <h3>Reliability &amp; diagnostics</h3>
+          <div class="skills">
+            <span class="chip">Retry logic</span>
+            <span class="chip">Stale-data prevention</span>
+            <span class="chip">Watchdogs</span>
+            <span class="chip">Power-cycle recovery</span>
+            <span class="chip">Local buffering</span>
+            <span class="chip">Fault handling</span>
+            <span class="chip">Log analysis</span>
+            <span class="chip">Packet capture</span>
+          </div>
+        </div>
+
+        <div class="skill-group">
+          <h3>Lab, bench &amp; hardware</h3>
+          <div class="skills">
+            <span class="chip">Oscilloscopes</span>
+            <span class="chip">Logic analyzers</span>
+            <span class="chip">Spectrum analyzers</span>
+            <span class="chip">JTAG / SWD</span>
+            <span class="chip">Protocol sniffers</span>
+            <span class="chip">Wireshark</span>
+            <span class="chip">SDR for LPWAN</span>
+            <span class="chip">Schematic capture</span>
+            <span class="chip">PCB design verification</span>
+            <span class="chip">Assembly &amp; rework</span>
+            <span class="chip">Flexible electronics</span>
+          </div>
+        </div>
+
+        <div class="skill-group">
+          <h3>Languages &amp; automation</h3>
+          <div class="skills">
+            <span class="chip">C</span>
+            <span class="chip">C++</span>
+            <span class="chip">Python</span>
+            <span class="chip">Bash</span>
+            <span class="chip">JavaScript</span>
+            <span class="chip">MATLAB</span>
+            <span class="chip">Test automation</span>
+            <span class="chip">JSON data pipelines</span>
+          </div>
+        </div>
+
+        <div class="skill-group">
+          <h3>Toolchains &amp; IDEs</h3>
+          <div class="skills">
+            <span class="chip">ARM toolchains</span>
+            <span class="chip">Keil</span>
+            <span class="chip">STM32CubeIDE</span>
+            <span class="chip">Code Composer Studio</span>
+            <span class="chip">Eclipse</span>
+            <span class="chip">PlatformIO</span>
+            <span class="chip">Vitis / XSDK</span>
+            <span class="chip">Arduino</span>
+            <span class="chip">Git · GitLab · Bitbucket</span>
+          </div>
+        </div>
+      </section>
+    </div>
+
+    <!-- ============ CONTACT ============ -->
+    <div class="wrap">
+      <section class="reveal" id="contact">
+        <p class="section-label">Contact</p>
+        <h2>Let's connect</h2>
+        <p style="color:var(--text-soft);max-width:60ch;">
+          Based in the San Francisco Bay Area. The best way to reach me is by email at
+          <a href="mailto:info@lumosmax.dev">info@lumosmax.dev</a>. I'm also on
+          <a href="https://www.linkedin.com/in/doraditya" target="_blank" rel="noopener">LinkedIn</a>
+          and <a href="https://github.com/lumosmaximus" target="_blank" rel="noopener">GitHub</a>.
+        </p>
+        <p>
+          <a class="btn btn-primary" href="mailto:info@lumosmax.dev">Email me</a>
+          <a class="btn btn-ghost" href="https://www.linkedin.com/in/doraditya" target="_blank" rel="noopener">LinkedIn</a>
+        </p>
+      </section>
+    </div>
+  </main>
+
+  <footer class="site">
+    <div class="wrap">
+      <div class="socials">
+        <a href="https://github.com/lumosmaximus" target="_blank" rel="noopener" aria-label="GitHub"><i class="fa-brands fa-github"></i></a>
+        <a href="https://www.linkedin.com/in/doraditya" target="_blank" rel="noopener" aria-label="LinkedIn"><i class="fa-brands fa-linkedin"></i></a>
+        <a href="mailto:info@lumosmax.dev" aria-label="Email"><i class="fa-solid fa-envelope"></i></a>
+      </div>
+      <div>© <span id="year"></span> Lumosmax</div>
+    </div>
+  </footer>
+
+  <script src="js/main.js"></script>
+</body>
+</html>
