@@ -301,6 +301,44 @@ section h2 { font-size: 1.6rem; margin: 0 0 18px; letter-spacing: -0.01em; }
 @media (max-width: 820px) { .pgrid { grid-template-columns: repeat(2, 1fr); } }
 @media (max-width: 540px) { .pgrid { grid-template-columns: 1fr; } }
 
+/* ---------- Status sections (done / brewing / ideas) ---------- */
+.status-section { margin-bottom: 40px; }
+.status-section.hide { display: none; }
+.status-head {
+  display: flex;
+  align-items: baseline;
+  gap: 12px;
+  flex-wrap: wrap;
+  margin: 0 0 18px;
+  padding-bottom: 8px;
+  border-bottom: 1px solid var(--border);
+}
+.status-head h2 { font-size: 1.35rem; margin: 0; }
+.status-head h2 i { color: var(--link); margin-right: 6px; font-size: 0.95em; }
+.status-blurb { color: var(--text-soft); font-size: 0.9rem; }
+
+.pcard-desc { color: var(--text-soft); font-size: 0.9rem; margin: 0 0 10px; }
+
+.status-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-family: var(--mono);
+  font-size: 0.75rem;
+  padding: 3px 10px;
+  border-radius: 999px;
+  border: 1px solid var(--border);
+}
+.status-badge i { font-size: 0.9em; }
+.status-done    { color: #2e9e6b; border-color: color-mix(in srgb, #2e9e6b 45%, var(--border)); }
+.status-brewing { color: #d98a2b; border-color: color-mix(in srgb, #d98a2b 45%, var(--border)); }
+.status-idea    { color: var(--link); border-color: color-mix(in srgb, var(--link) 45%, var(--border)); }
+
+.gh-link { display: inline-flex; align-items: center; gap: 6px; font-weight: 700; font-size: 0.85rem; }
+
+/* Loading + rendered README */
+.loading { color: var(--text-soft); font-family: var(--mono); font-size: 0.9rem; padding: 20px 0; }
+
 /* ---------- Single project (LoveIt single-post) ---------- */
 .single-head { padding: 84px 0 6px; }
 .single-head .back { font-size: 0.9rem; color: var(--text-soft); }

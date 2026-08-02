@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Lumosmax — Projects</title>
-  <meta name="description" content="Selected projects, things I've designed, built, and shipped." />
+  <title>Project — Lumosmax</title>
+  <meta name="description" content="Project write-up." />
   <meta name="theme-color" content="#2d96bd" />
   <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='70'>l</text></svg>" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -28,25 +28,14 @@
 
   <main>
     <div class="wrap">
-      <div class="page-head reveal">
-        <h1>Projects</h1>
-        <p>Grouped by where they stand, and pulled live from GitHub. Filter by category below.</p>
+      <div class="single-head reveal">
+        <a class="back" href="index.html"><i class="fa-solid fa-arrow-left"></i> All projects</a>
+        <h1 id="proj-title">Loading…</h1>
+        <div class="single-meta" id="proj-meta"></div>
       </div>
-
-      <!-- ===== CATEGORY FILTER ===== -->
-      <div class="filter-bar reveal">
-        <button class="filter-btn active" data-filter="all">All Works</button>
-        <button class="filter-btn" data-filter="embedded">Embedded Systems</button>
-        <button class="filter-btn" data-filter="iot">IoT</button>
-        <button class="filter-btn" data-filter="robotics">Robotics</button>
-        <button class="filter-btn" data-filter="software">Software Development</button>
-        <button class="filter-btn" data-filter="fun">Fun</button>
-      </div>
-
-      <!-- Projects render here (see js/projects-config.js to add projects) -->
-      <div id="projects-root">
-        <p class="loading"><i class="fa-solid fa-spinner fa-spin"></i> Loading projects…</p>
-      </div>
+      <article class="article reveal" id="proj-body">
+        <p class="loading"><i class="fa-solid fa-spinner fa-spin"></i> Loading write-up from GitHub…</p>
+      </article>
     </div>
   </main>
 
@@ -61,6 +50,7 @@
     </div>
   </footer>
 
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/marked/12.0.2/marked.min.js"></script>
   <script src="js/main.js"></script>
   <script src="js/projects-config.js"></script>
   <script src="js/projects.js"></script>
