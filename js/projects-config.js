@@ -29,11 +29,11 @@ window.PROJECTS = [
     embed: "index.html",   // fallback: runs the raw index.html if `live` is ever removed
   },
   {
-    title: "E-ink Display for Flipper Zero",
-    desc: "An e-ink screen module riding on the Flipper Zero's GPIO header.",
-    status: "brewing",
+    repo: "eink-flipper-badge",
+    title: "E-Paper Badge for Flipper Zero",
+    desc: "A wearable six-color e-paper badge with a bit-banged display driver written from the datasheet up.",
+    status: "done",
     categories: ["embedded", "iot", "fun"],
-    // no repo yet — add `repo: "..."` once it's public
   },
   {
     title: "Your next idea",
