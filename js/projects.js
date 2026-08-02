@@ -88,8 +88,9 @@
       const section = document.createElement("section");
       section.className = "status-section reveal show";
       section.dataset.status = st;
+      section.id = "s-" + st;
       section.innerHTML =
-        `<div class="status-head"><h2><i class="fa-solid ${meta.icon}"></i> ${meta.label}</h2>` +
+        `<div class="status-head"><h2><i class="fa-solid ${meta.icon}"></i>${meta.label}</h2>` +
         `<span class="status-blurb">${meta.blurb}</span></div>` +
         `<div class="pgrid"></div>`;
       const grid = section.querySelector(".pgrid");
@@ -124,6 +125,19 @@
     wireFilter(root);
   }
 
+  // Update the rail's per-status counts to reflect what's currently visible.
+  function refreshCounts(root) {
+    STATUS_ORDER.forEach((st) => {
+      const badge = document.querySelector(`[data-count="${st}"]`);
+      if (!badge) return;
+      const sec = root.querySelector(`.status-section[data-status="${st}"]`);
+      const n = sec ? sec.querySelectorAll(".pcard:not(.hide)").length : 0;
+      badge.textContent = n;
+      const link = badge.closest("a");
+      if (link) link.classList.toggle("dim", n === 0);
+    });
+  }
+
   function wireFilter(root) {
     const bar = document.querySelector(".filter-bar");
     if (!bar) return;
@@ -142,7 +156,9 @@
         });
         sec.classList.toggle("hide", shown === 0);
       });
+      refreshCounts(root);
     });
+    refreshCounts(root);
   }
 
   // ============ DETAIL PAGE (renders README) ============

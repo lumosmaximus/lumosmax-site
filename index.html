@@ -27,25 +27,41 @@
   </header>
 
   <main>
-    <div class="wrap">
+    <div class="wrap wide">
       <div class="page-head reveal">
         <h1>Projects</h1>
-        <p>Grouped by where they stand, and pulled live from GitHub. Filter by category below.</p>
+        <p>Things I've designed, built, and shipped, pulled live from GitHub.</p>
       </div>
 
-      <!-- ===== CATEGORY FILTER ===== -->
-      <div class="filter-bar reveal">
-        <button class="filter-btn active" data-filter="all">All Works</button>
-        <button class="filter-btn" data-filter="embedded">Embedded Systems</button>
-        <button class="filter-btn" data-filter="iot">IoT</button>
-        <button class="filter-btn" data-filter="robotics">Robotics</button>
-        <button class="filter-btn" data-filter="software">Software Development</button>
-        <button class="filter-btn" data-filter="fun">Fun</button>
-      </div>
+      <div class="projects-layout">
+        <!-- ===== LEFT RAIL ===== -->
+        <aside class="rail reveal">
+          <div class="rail-group">
+            <p class="rail-label">Category</p>
+            <div class="filter-bar">
+              <button class="filter-btn active" data-filter="all">All works</button>
+              <button class="filter-btn" data-filter="embedded">Embedded</button>
+              <button class="filter-btn" data-filter="iot">IoT</button>
+              <button class="filter-btn" data-filter="robotics">Robotics</button>
+              <button class="filter-btn" data-filter="software">Software</button>
+              <button class="filter-btn" data-filter="fun">Fun</button>
+            </div>
+          </div>
 
-      <!-- Projects render here (see js/projects-config.js to add projects) -->
-      <div id="projects-root">
-        <p class="loading"><i class="fa-solid fa-spinner fa-spin"></i> Loading projects…</p>
+          <div class="rail-group">
+            <p class="rail-label">Status</p>
+            <nav class="rail-status" id="rail-status">
+              <a href="#s-done" class="st-done"><i class="fa-solid fa-circle-check"></i>Done<span class="n" data-count="done">0</span></a>
+              <a href="#s-brewing" class="st-brewing"><i class="fa-solid fa-mug-hot"></i>Brewing<span class="n" data-count="brewing">0</span></a>
+              <a href="#s-idea" class="st-idea"><i class="fa-solid fa-lightbulb"></i>Ideas<span class="n" data-count="idea">0</span></a>
+            </nav>
+          </div>
+        </aside>
+
+        <!-- Projects render here (see js/projects-config.js to add projects) -->
+        <div id="projects-root">
+          <p class="loading"><i class="fa-solid fa-spinner fa-spin"></i> Loading projects…</p>
+        </div>
       </div>
     </div>
   </main>
