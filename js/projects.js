@@ -20,17 +20,26 @@
   };
   const STATUS_ORDER = ["done", "brewing", "idea"];
 
-  // ---- tiny cache (30 min) to be kind to GitHub's rate limit ----
-  const TTL = 30 * 60 * 1000;
+  // ---- tiny cache to be kind to GitHub's rate limit ----
+  // Bump CACHE_VER to invalidate every cached entry immediately.
+  const CACHE_VER = "v2";
+  const TTL = 5 * 60 * 1000;
+  const key = (kind, repo) => `gh:${CACHE_VER}:${kind}:${repo}`;
   function cacheGet(k) {
     try { const o = JSON.parse(localStorage.getItem(k)); if (o && Date.now() - o.t < TTL) return o.d; } catch {}
     return null;
   }
   function cacheSet(k, d) { try { localStorage.setItem(k, JSON.stringify({ t: Date.now(), d })); } catch {} }
+  // Clear entries written by older cache versions so nobody is stuck on stale content.
+  try {
+    Object.keys(localStorage).forEach((k) => {
+      if (k.startsWith("gh:") && !k.startsWith(`gh:${CACHE_VER}:`)) localStorage.removeItem(k);
+    });
+  } catch {}
 
   async function fetchRepo(repo) {
-    const key = "gh:repo:" + repo;
-    const hit = cacheGet(key); if (hit) return hit;
+    const k = key("repo", repo);
+    const hit = cacheGet(k); if (hit) return hit;
     const r = await fetch(`https://api.github.com/repos/${USER}/${repo}`);
     if (!r.ok) throw new Error("repo " + r.status);
     const j = await r.json();
@@ -39,14 +48,14 @@
       homepage: j.homepage || "", topics: j.topics || [], language: j.language || "",
       stars: j.stargazers_count || 0, pushed: j.pushed_at || "",
     };
-    cacheSet(key, data); return data;
+    cacheSet(k, data); return data;
   }
   async function fetchReadme(repo) {
-    const key = "gh:readme:" + repo;
-    const hit = cacheGet(key); if (hit != null) return hit;
+    const k = key("readme", repo);
+    const hit = cacheGet(k); if (hit != null) return hit;
     for (const branch of ["HEAD"]) {
       const r = await fetch(`https://raw.githubusercontent.com/${USER}/${repo}/${branch}/README.md`);
-      if (r.ok) { const t = await r.text(); cacheSet(key, t); return t; }
+      if (r.ok) { const t = await r.text(); cacheSet(k, t); return t; }
     }
     throw new Error("no README");
   }
