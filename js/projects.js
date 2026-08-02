@@ -190,14 +190,18 @@
           `allow="camera"></iframe>`;
         bodyEl.appendChild(wrap);
         const iframe = wrap.querySelector("iframe");
-        if (cfg.live) {
-          iframe.src = cfg.live;
-        } else {
-          // fetch the repo's self-contained HTML and run it in the frame
+        if (cfg.embed) {
+          // Run the repo's self-contained HTML directly. Works as soon as the
+          // repo is public, with no GitHub Pages setup required.
           fetch(`https://raw.githubusercontent.com/${USER}/${repo}/HEAD/${cfg.embed}`)
             .then((res) => (res.ok ? res.text() : Promise.reject()))
             .then((html) => { iframe.srcdoc = html; })
-            .catch(() => { wrap.innerHTML = `<div class="live-bar"><span>Live tool unavailable</span><a href="${openUrl}" target="_blank" rel="noopener">Open on GitHub</a></div>`; });
+            .catch(() => {
+              if (cfg.live) { iframe.src = cfg.live; }
+              else { wrap.innerHTML = `<div class="live-bar"><span>Live tool unavailable</span><a href="${openUrl}" target="_blank" rel="noopener">Open on GitHub</a></div>`; }
+            });
+        } else if (cfg.live) {
+          iframe.src = cfg.live;
         }
       }
 
@@ -227,6 +231,17 @@
         rm.innerHTML += window.marked.parse(md);
         bodyEl.appendChild(rm);
         fixRelativeLinks(rm, repo);
+        // The article's own H1 duplicates the page title, so drop it.
+        const h1 = rm.querySelector("h1");
+        if (h1) h1.remove();
+        // Tag image-only tables so they get the gallery treatment.
+        rm.querySelectorAll("table").forEach((t) => {
+          if (t.querySelector("img")) t.classList.add("img-table");
+        });
+        // Hide any image that fails to load (e.g. a screenshot not added yet).
+        rm.querySelectorAll("img").forEach((im) => {
+          im.addEventListener("error", () => { im.style.display = "none"; });
+        });
       } else if (!cfg.embed && !cfg.live) {
         bodyEl.innerHTML = r.description
           ? `<p>${r.description}</p><p><a href="${r.html_url}" target="_blank" rel="noopener">See the repository on GitHub →</a></p>`

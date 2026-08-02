@@ -27,11 +27,6 @@ window.PROJECTS = [
     categories: ["software", "embedded", "fun"],
     live: "https://lumosmaximus.github.io/spectra/",  // deployed tool, embedded on the project page
     embed: "index.html",   // fallback: runs the raw index.html if `live` is ever removed
-    gallery: [             // before / after pairs shown on the project page
-      { before: "docs/before-1.png", after: "docs/out-1.png" },
-      { before: "docs/before-2.png", after: "docs/out-2.png" },
-      { before: "docs/before-3.png", after: "docs/out-3.png" },
-    ],
   },
   {
     title: "E-ink Display for Flipper Zero",

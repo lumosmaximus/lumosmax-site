@@ -352,6 +352,23 @@ section h2 { font-size: 1.6rem; margin: 0 0 18px; letter-spacing: -0.01em; }
 .live-embed iframe { width: 100%; height: 900px; border: 0; display: block; background: #17181b; }
 .readme-heading { font-size: 1.3rem; margin: 30px 0 12px; padding-bottom: 6px; border-bottom: 1px solid var(--border); }
 
+/* Rendered article (README) */
+.readme { font-size: 1.02rem; }
+.readme > p:first-of-type { font-size: 1.12rem; color: var(--heading); }
+.readme table { width: 100%; border-collapse: collapse; margin: 18px 0; font-size: 0.95rem; }
+.readme th, .readme td { border: 1px solid var(--border); padding: 8px 12px; text-align: left; }
+.readme th { background: var(--bg-soft); font-size: 0.85rem; letter-spacing: 0.04em; }
+/* image tables become a clean gallery grid */
+.readme table.img-table { border-collapse: separate; border-spacing: 12px 12px; }
+.readme table.img-table th { border: none; background: none; padding: 0 0 0 2px; color: var(--text-soft); font-family: var(--mono); font-size: 0.72rem; text-transform: uppercase; }
+.readme table.img-table td { border: none; padding: 0; width: 50%; }
+.readme table.img-table img {
+  width: 100%; margin: 0; display: block;
+  border: 1px solid var(--border); border-radius: var(--radius);
+}
+.readme > p > img:only-child { border-radius: var(--radius); box-shadow: var(--shadow); }
+@media (max-width: 620px) { .readme table.img-table { border-spacing: 6px 8px; } }
+
 /* Before / after gallery */
 .gallery { margin: 6px 0 10px; }
 .gallery-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 16px; }
