@@ -162,7 +162,7 @@
 
     // find config entry for categories
     const cfg = PROJECTS.find((p) => p.repo === repo) || {};
-    document.title = repo + " — Lumosmax";
+    document.title = repo + " · Lumosmax";
 
     try {
       const [r, md] = await Promise.all([fetchRepo(repo), fetchReadme(repo).catch(() => "")]);
@@ -175,13 +175,62 @@
         (r.stars ? `<span><i class="fa-solid fa-star"></i>${r.stars}</span>` : "") +
         `<a class="gh-link" href="${r.html_url}" target="_blank" rel="noopener"><i class="fa-brands fa-github"></i> View on GitHub</a>` +
         `<div class="tags">${cats.map((c) => `<span class="tag">${(CATS[c] && CATS[c].label) || c}</span>`).join("")}</div>`;
+      // Build the write-up: optional live embed on top, then the README.
+      bodyEl.innerHTML = "";
+
+      if (cfg.embed || cfg.live) {
+        const wrap = document.createElement("div");
+        wrap.className = "live-embed";
+        const openUrl = cfg.live || r.html_url;
+        wrap.innerHTML =
+          `<div class="live-bar"><span><i class="fa-solid fa-circle dot"></i> Live tool</span>` +
+          `<a href="${openUrl}" target="_blank" rel="noopener">Open in new tab <i class="fa-solid fa-arrow-up-right-from-square" style="font-size:.85em;"></i></a></div>` +
+          `<iframe title="${(cfg.title || repo)} live" loading="lazy" ` +
+          `sandbox="allow-scripts allow-downloads allow-modals allow-popups allow-forms" ` +
+          `allow="camera"></iframe>`;
+        bodyEl.appendChild(wrap);
+        const iframe = wrap.querySelector("iframe");
+        if (cfg.live) {
+          iframe.src = cfg.live;
+        } else {
+          // fetch the repo's self-contained HTML and run it in the frame
+          fetch(`https://raw.githubusercontent.com/${USER}/${repo}/HEAD/${cfg.embed}`)
+            .then((res) => (res.ok ? res.text() : Promise.reject()))
+            .then((html) => { iframe.srcdoc = html; })
+            .catch(() => { wrap.innerHTML = `<div class="live-bar"><span>Live tool unavailable</span><a href="${openUrl}" target="_blank" rel="noopener">Open on GitHub</a></div>`; });
+        }
+      }
+
+      // before/after gallery (config-driven)
+      if (cfg.gallery && cfg.gallery.length) {
+        const raw = (p) => (/^https?:/.test(p) ? p : `https://raw.githubusercontent.com/${USER}/${repo}/HEAD/${p.replace(/^\.?\//, "")}`);
+        const g = document.createElement("div");
+        g.className = "gallery";
+        g.innerHTML =
+          `<h2 class="readme-heading">Sample conversions</h2>` +
+          `<p class="gallery-note">Photos run through the converter, next to how the panel paints them in six inks.</p>` +
+          `<div class="gallery-grid">` +
+          cfg.gallery.map((it) =>
+            `<div class="ba"><div class="pair">` +
+            `<figure><img loading="lazy" src="${raw(it.before)}" alt="original photo"><span class="lbl">Photo</span></figure>` +
+            `<figure><img loading="lazy" src="${raw(it.after)}" alt="six-color panel output"><span class="lbl">On the panel</span></figure>` +
+            `</div></div>`
+          ).join("") +
+          `</div>`;
+        bodyEl.appendChild(g);
+      }
+
       if (md && window.marked) {
-        bodyEl.innerHTML = window.marked.parse(md);
-        fixRelativeLinks(bodyEl, repo);
-      } else if (r.description) {
-        bodyEl.innerHTML = `<p>${r.description}</p><p><a href="${r.html_url}" target="_blank" rel="noopener">See the repository on GitHub →</a></p>`;
-      } else {
-        bodyEl.innerHTML = `<p>No README yet. <a href="${r.html_url}" target="_blank" rel="noopener">See the repository on GitHub →</a></p>`;
+        const rm = document.createElement("div");
+        rm.className = "readme";
+        if (cfg.embed || cfg.live) rm.innerHTML = `<h2 class="readme-heading">About this project</h2>`;
+        rm.innerHTML += window.marked.parse(md);
+        bodyEl.appendChild(rm);
+        fixRelativeLinks(rm, repo);
+      } else if (!cfg.embed && !cfg.live) {
+        bodyEl.innerHTML = r.description
+          ? `<p>${r.description}</p><p><a href="${r.html_url}" target="_blank" rel="noopener">See the repository on GitHub →</a></p>`
+          : `<p>No README yet. <a href="${r.html_url}" target="_blank" rel="noopener">See the repository on GitHub →</a></p>`;
       }
     } catch (err) {
       titleEl.textContent = cfg.title || repo;
