@@ -11,7 +11,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700;900&family=Fira+Code&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
-  <link rel="stylesheet" href="css/style.css?v=6" />
+  <link rel="stylesheet" href="css/style.css?v=12" />
 </head>
 <body>
   <header class="site">
@@ -27,15 +27,22 @@
   </header>
 
   <main>
-    <div class="wrap">
-      <div class="single-head reveal">
-        <a class="back" href="index.html"><i class="fa-solid fa-arrow-left"></i> All projects</a>
-        <h1 id="proj-title">Loading…</h1>
-        <div class="single-meta" id="proj-meta"></div>
+    <div class="wrap wide">
+      <div class="projects-layout">
+        <!-- ===== LEFT RAIL: jump straight to any other project ===== -->
+        <aside class="rail reveal" id="proj-rail"></aside>
+
+        <div>
+          <div class="single-head reveal">
+            <a class="back" href="index.html"><i class="fa-solid fa-arrow-left"></i> All projects</a>
+            <h1 id="proj-title">Loading…</h1>
+            <div class="single-meta" id="proj-meta"></div>
+          </div>
+          <article class="article reveal" id="proj-body">
+            <p class="loading"><i class="fa-solid fa-spinner fa-spin"></i> Loading write-up from GitHub…</p>
+          </article>
+        </div>
       </div>
-      <article class="article reveal" id="proj-body">
-        <p class="loading"><i class="fa-solid fa-spinner fa-spin"></i> Loading write-up from GitHub…</p>
-      </article>
     </div>
   </main>
 
@@ -51,8 +58,8 @@
   </footer>
 
   <script src="https://cdnjs.cloudflare.com/ajax/libs/marked/12.0.2/marked.min.js"></script>
-  <script src="js/main.js?v=6"></script>
-  <script src="js/projects-config.js?v=6"></script>
-  <script src="js/projects.js?v=6"></script>
+  <script src="js/main.js?v=12"></script>
+  <script src="js/projects-config.js?v=12"></script>
+  <script src="js/projects.js?v=12"></script>
 </body>
 </html>

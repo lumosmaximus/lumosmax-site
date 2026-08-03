@@ -280,6 +280,36 @@ section h2 { font-size: 1.6rem; margin: 0 0 18px; letter-spacing: -0.01em; }
   background: var(--bg-soft);
 }
 
+/* project list in the rail on a detail page */
+.rail-projects { display: flex; flex-direction: column; gap: 2px; }
+.rail-projects a {
+  display: block;
+  padding: 7px 10px;
+  border-left: 2px solid transparent;
+  border-radius: 0 6px 6px 0;
+  font-size: 0.9rem;
+  line-height: 1.4;
+  color: var(--text-soft);
+  transition: color 0.18s ease, background 0.18s ease, border-color 0.18s ease;
+}
+.rail-projects a:hover { color: var(--text); background: var(--bg-soft); }
+.rail-projects a.active {
+  color: var(--link);
+  font-weight: 700;
+  border-left-color: var(--link);
+  background: var(--bg-soft);
+}
+.rail-all {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.88rem;
+  color: var(--text-soft);
+  padding: 4px 10px;
+}
+.rail-all:hover { color: var(--link); }
+.rail-all i { font-size: 0.8em; }
+
 /* status jump links with counts */
 .rail-status { display: flex; flex-direction: column; gap: 2px; }
 .rail-status a {
@@ -405,24 +435,71 @@ section h2 { font-size: 1.6rem; margin: 0 0 18px; letter-spacing: -0.01em; }
 
 .pcard-desc { color: var(--text-soft); font-size: 0.9rem; margin: 0 0 10px; }
 
-/* Future ideas: a list, not cards */
-.idea-list { list-style: none; margin: 0; padding: 0; max-width: 640px; }
+/* Future ideas: collapsed by default, plain single-column list when open */
+.idea-block summary {
+  cursor: pointer;
+  list-style: none;
+  user-select: none;
+  transition: opacity 0.15s ease;
+}
+.idea-block summary::-webkit-details-marker { display: none; }
+.idea-block summary:hover { opacity: 0.75; }
+/* little caret that rotates when open */
+.idea-block summary h2::after {
+  content: "\203A";
+  display: inline-block;
+  margin-left: 9px;
+  font-family: var(--font);
+  font-size: 1.15em;
+  line-height: 0;
+  color: var(--text-soft);
+  transform: rotate(90deg);
+  transition: transform 0.2s ease;
+}
+.idea-block[open] summary h2::after { transform: rotate(-90deg); }
+
+.idea-list {
+  list-style: none;
+  margin: 10px 0 0;
+  padding: 0 0 0 28px;
+  max-width: 660px;
+}
 .idea-list li {
-  display: flex;
-  align-items: baseline;
-  gap: 12px;
-  padding: 12px 4px;
-  border-bottom: 1px solid var(--border);
+  padding: 7px 0;
+  position: relative;
 }
-.idea-list li:last-child { border-bottom: none; }
+.idea-list li::before {
+  content: "\00B7";
+  position: absolute;
+  left: -14px;
+  top: 6px;
+  color: var(--link);
+  font-weight: 700;
+}
 .idea-list li.hide { display: none; }
-.idea-list i { color: var(--link); font-size: 0.9rem; width: 18px; text-align: center; flex: none; }
-.idea-title { color: var(--text); font-size: 1rem; }
-.idea-desc { color: var(--text-soft); font-size: 0.88rem; margin-left: auto; padding-left: 14px; }
-@media (max-width: 620px) {
-  .idea-list li { flex-wrap: wrap; }
-  .idea-desc { margin-left: 30px; padding-left: 0; flex-basis: 100%; }
+
+/* The list items carry .pcard only so the category filter can find them.
+   Strip every card style back off so they are just text. */
+.idea-list li.pcard {
+  display: list-item;
+  border: none;
+  background: none;
+  border-radius: 0;
+  box-shadow: none;
+  overflow: visible;
+  animation: none;
+  transform: none;
+  padding: 7px 0;
 }
+.idea-list li.pcard:hover { transform: none; border-color: transparent; box-shadow: none; }
+
+/* Plain text links. Detail lives on the idea's own page. */
+.idea-list a { color: var(--text); font-size: 0.98rem; }
+.idea-list a:hover { color: var(--link); text-decoration: underline; text-underline-offset: 3px; }
+
+/* No focus ring box on the collapsible header, but keep it for keyboard users. */
+.idea-block summary:focus { outline: none; }
+.idea-block summary:focus-visible { outline: 2px solid var(--link); outline-offset: 3px; }
 
 .status-badge {
   display: inline-flex;

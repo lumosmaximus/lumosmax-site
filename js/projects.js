@@ -100,6 +100,8 @@
     if (p.url) return p.url;
     return null;
   }
+  // Stable id for a repo-less idea: its position in the PROJECTS array.
+  function ideaIndex(p) { return PROJECTS.indexOf(p); }
 
   // ============ INDEX PAGE ============
   async function renderIndex(root) {
@@ -115,29 +117,40 @@
       section.className = "status-section reveal show";
       section.dataset.status = st;
       section.id = "s-" + st;
-      // Ideas are just titles, so they read better as a list than as cards.
+      // Ideas are just titles, so they render as a plain bulleted list of
+      // links rather than taking up a screen of cards. Open by default; the
+      // header still toggles if the list ever gets long.
       const asList = st === "idea";
+      if (asList) {
+        section.innerHTML =
+          `<details class="idea-block" open>` +
+          `<summary class="status-head"><h2><i class="fa-solid ${meta.icon}"></i>${meta.label}</h2>` +
+          `<span class="status-blurb">${meta.blurb}</span></summary>` +
+          `<ul class="idea-list"></ul></details>`;
+        const ul = section.querySelector(".idea-list");
+        root.appendChild(section);
+        list.forEach((p, i) => {
+          const li = document.createElement("li");
+          li.className = "pcard";          // reuse the filter hooks
+          li.dataset.cats = (p.categories || []).join(" ");
+          const label = p.title || p.repo || "Untitled";
+          // Ideas open their own page. An idea with a repo goes to the repo
+          // page; otherwise it uses its index in the config.
+          const href = p.repo
+            ? `project.html?repo=${encodeURIComponent(p.repo)}`
+            : `project.html?idea=${encodeURIComponent(String(ideaIndex(p)))}`;
+          li.innerHTML = `<a href="${href}">${label}</a>`;
+          ul.appendChild(li);
+        });
+        continue;
+      }
+
       section.innerHTML =
         `<div class="status-head"><h2><i class="fa-solid ${meta.icon}"></i>${meta.label}</h2>` +
         `<span class="status-blurb">${meta.blurb}</span></div>` +
-        (asList ? `<ul class="idea-list"></ul>` : `<div class="pgrid"></div>`);
-      const grid = section.querySelector(asList ? ".idea-list" : ".pgrid");
+        `<div class="pgrid"></div>`;
+      const grid = section.querySelector(".pgrid");
       root.appendChild(section);
-
-      if (asList) {
-        for (const p of list) {
-          const li = document.createElement("li");
-          li.className = "pcard";          // reuse filtering hooks
-          li.dataset.cats = (p.categories || []).join(" ");
-          const c = catStyle(p.categories);
-          li.innerHTML =
-            `<i class="fa-solid ${c.icon}"></i>` +
-            `<span class="idea-title">${p.title || p.repo || "Untitled"}</span>` +
-            (p.desc ? `<span class="idea-desc">${p.desc}</span>` : "");
-          grid.appendChild(li);
-        }
-        continue;
-      }
 
       for (const p of list) {
         const href = cardHref(p);
@@ -221,12 +234,61 @@
     });
   }
 
+  // Sidebar on a project page: every project, grouped by status, so you can
+  // hop straight to another one without going back to the index.
+  function renderProjectRail(currentRepo, currentIdea) {
+    const rail = document.getElementById("proj-rail");
+    if (!rail) return;
+    let html = "";
+    for (const st of STATUS_ORDER) {
+      const list = PROJECTS.filter((p) => p.status === st);
+      if (!list.length) continue;
+      const meta = STATUS[st];
+      html += `<div class="rail-group"><p class="rail-label">${meta.label}</p><nav class="rail-projects">`;
+      for (const p of list) {
+        const idx = PROJECTS.indexOf(p);
+        const href = p.repo
+          ? `project.html?repo=${encodeURIComponent(p.repo)}`
+          : `project.html?idea=${idx}`;
+        const active =
+          (p.repo && p.repo === currentRepo) ||
+          (!p.repo && currentIdea !== null && String(idx) === String(currentIdea));
+        html += `<a class="${active ? "active" : ""}" href="${href}">${p.title || p.repo}</a>`;
+      }
+      html += `</nav></div>`;
+    }
+    html += `<div class="rail-group"><a class="rail-all" href="index.html">` +
+            `<i class="fa-solid fa-arrow-left"></i> All projects</a></div>`;
+    rail.innerHTML = html;
+  }
+
   async function renderDetail() {
     const params = new URLSearchParams(location.search);
     const repo = params.get("repo");
+    const ideaId = params.get("idea");
     const titleEl = document.getElementById("proj-title");
     const metaEl = document.getElementById("proj-meta");
     const bodyEl = document.getElementById("proj-body");
+
+    renderProjectRail(repo, ideaId);
+
+    // ---- An idea with no repo yet: render straight from the config ----
+    if (!repo && ideaId !== null) {
+      const p = PROJECTS[Number(ideaId)];
+      if (!p) { titleEl.textContent = "Not found"; bodyEl.innerHTML = "<p>That idea does not exist.</p>"; return; }
+      document.title = (p.title || "Idea") + " · Lumosmax";
+      titleEl.textContent = p.title || "Idea";
+      const stat = STATUS[p.status] || STATUS.idea;
+      const cats = p.categories || [];
+      metaEl.innerHTML =
+        `<span class="status-badge status-${p.status}"><i class="fa-solid ${stat.icon}"></i> ${stat.label}</span>` +
+        `<div class="tags">${cats.map((c) => `<span class="tag">${(CATS[c] && CATS[c].label) || c}</span>`).join("")}</div>`;
+      bodyEl.innerHTML = p.notes
+        ? (window.marked ? window.marked.parse(p.notes) : `<p>${p.notes}</p>`)
+        : `<p class="loading">Nothing written down yet. This one is still just an idea.</p>`;
+      return;
+    }
+
     if (!repo) { titleEl.textContent = "Project not found"; bodyEl.innerHTML = "<p>No project specified.</p>"; return; }
 
     // find config entry for categories

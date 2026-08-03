@@ -47,11 +47,32 @@ window.PROJECTS = [
     categories: ["embedded", "iot", "fun"],
     related: ["spectra"],
   },
-  // Future ideas render as a plain list, so a title (and optional desc) is enough.
+  // Future ideas are a plain bulleted list of links. A title is enough to start.
+  // Add `notes` when you begin thinking one through: it renders as the body of
+  // that idea's own page. Markdown works, so headings, lists, and links are fine.
   {
     title: "Implementing Whisper on a handheld device",
     status: "idea",
     categories: ["embedded", "software"],
+    notes: `Speech to text running entirely on the device, with no network round trip.
+
+## Why
+
+Every voice assistant worth using sends audio to a server. That rules them out
+for anything private, anything offline, and anything that needs to answer in
+under a second.
+
+## Open questions
+
+- Which Whisper variant actually fits? tiny and base are the realistic candidates.
+- How much RAM does inference need once the model is quantized?
+- Is a microcontroller enough, or does this want a small Linux board?
+- What is the power budget for something battery powered and pocket sized?
+
+## First step
+
+Benchmark whisper.cpp with a quantized tiny model on a few candidate boards and
+measure latency, memory, and current draw before committing to hardware.`,
   },
   {
     title: "Building a personal AI pet",
