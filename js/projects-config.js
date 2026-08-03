@@ -47,10 +47,20 @@ window.PROJECTS = [
     categories: ["embedded", "iot", "fun"],
     related: ["spectra"],
   },
+  // Future ideas render as a plain list, so a title (and optional desc) is enough.
   {
-    title: "Your next idea",
-    desc: "Something you want to build. Replace or delete this.",
+    title: "Implementing Whisper on a handheld device",
     status: "idea",
-    categories: ["robotics"],
+    categories: ["embedded", "software"],
+  },
+  {
+    title: "Building a personal AI pet",
+    status: "idea",
+    categories: ["robotics", "fun"],
+  },
+  {
+    title: "Device for heart rate zone indicator",
+    status: "idea",
+    categories: ["embedded", "iot"],
   },
 ];

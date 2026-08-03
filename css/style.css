@@ -405,6 +405,25 @@ section h2 { font-size: 1.6rem; margin: 0 0 18px; letter-spacing: -0.01em; }
 
 .pcard-desc { color: var(--text-soft); font-size: 0.9rem; margin: 0 0 10px; }
 
+/* Future ideas: a list, not cards */
+.idea-list { list-style: none; margin: 0; padding: 0; max-width: 640px; }
+.idea-list li {
+  display: flex;
+  align-items: baseline;
+  gap: 12px;
+  padding: 12px 4px;
+  border-bottom: 1px solid var(--border);
+}
+.idea-list li:last-child { border-bottom: none; }
+.idea-list li.hide { display: none; }
+.idea-list i { color: var(--link); font-size: 0.9rem; width: 18px; text-align: center; flex: none; }
+.idea-title { color: var(--text); font-size: 1rem; }
+.idea-desc { color: var(--text-soft); font-size: 0.88rem; margin-left: auto; padding-left: 14px; }
+@media (max-width: 620px) {
+  .idea-list li { flex-wrap: wrap; }
+  .idea-desc { margin-left: 30px; padding-left: 0; flex-basis: 100%; }
+}
+
 .status-badge {
   display: inline-flex;
   align-items: center;

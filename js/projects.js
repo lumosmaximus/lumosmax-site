@@ -115,12 +115,29 @@
       section.className = "status-section reveal show";
       section.dataset.status = st;
       section.id = "s-" + st;
+      // Ideas are just titles, so they read better as a list than as cards.
+      const asList = st === "idea";
       section.innerHTML =
         `<div class="status-head"><h2><i class="fa-solid ${meta.icon}"></i>${meta.label}</h2>` +
         `<span class="status-blurb">${meta.blurb}</span></div>` +
-        `<div class="pgrid"></div>`;
-      const grid = section.querySelector(".pgrid");
+        (asList ? `<ul class="idea-list"></ul>` : `<div class="pgrid"></div>`);
+      const grid = section.querySelector(asList ? ".idea-list" : ".pgrid");
       root.appendChild(section);
+
+      if (asList) {
+        for (const p of list) {
+          const li = document.createElement("li");
+          li.className = "pcard";          // reuse filtering hooks
+          li.dataset.cats = (p.categories || []).join(" ");
+          const c = catStyle(p.categories);
+          li.innerHTML =
+            `<i class="fa-solid ${c.icon}"></i>` +
+            `<span class="idea-title">${p.title || p.repo || "Untitled"}</span>` +
+            (p.desc ? `<span class="idea-desc">${p.desc}</span>` : "");
+          grid.appendChild(li);
+        }
+        continue;
+      }
 
       for (const p of list) {
         const href = cardHref(p);
