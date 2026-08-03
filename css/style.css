@@ -351,7 +351,15 @@ section h2 { font-size: 1.6rem; margin: 0 0 18px; letter-spacing: -0.01em; }
 }
 .pcard-cover.has-img { background: var(--bg-soft); }
 .pcard-cover.has-img i { display: none; }
-.pcard-cover img { width: 100%; height: 100%; object-fit: cover; display: block; }
+/* Hidden until it actually loads, so a failed fetch never shows a broken icon. */
+.pcard-cover img { display: none; }
+.pcard-cover.has-img img {
+  display: block;
+  position: absolute; inset: 0;
+  width: 100%; height: 100%;
+  object-fit: cover;
+}
+.pcard-cover { position: relative; }
 .pcard-body { padding: 15px 17px; }
 .pcard-body h3 { margin: 0 0 9px; font-size: 1.05rem; }
 .pcard-tags { display: flex; flex-wrap: wrap; gap: 6px; }

@@ -78,11 +78,15 @@
     const src = /^https?:/.test(p.cover)
       ? p.cover
       : `https://raw.githubusercontent.com/${USER}/${p.repo}/HEAD/${p.cover.replace(/^\.?\//, "")}`;
-    const img = new Image();
-    img.loading = "lazy";
+    // The image goes straight into the DOM so the browser actually fetches it.
+    // (A detached <img> with loading="lazy" never enters the viewport, so it
+    // would sit there unloaded forever.) If it fails, drop back to the gradient.
+    const img = document.createElement("img");
     img.alt = "";
-    img.onload = () => { box.classList.add("has-img"); box.appendChild(img); };
-    img.src = src;   // on error we simply keep the gradient
+    img.addEventListener("load", () => box.classList.add("has-img"));
+    img.addEventListener("error", () => { img.remove(); box.classList.remove("has-img"); });
+    img.src = src;
+    box.appendChild(img);
   }
   function tagsHTML(cats) {
     return `<div class="pcard-tags">${(cats || []).map((c) => `<span>${(CATS[c] && CATS[c].label) || c}</span>`).join("")}</div>`;
