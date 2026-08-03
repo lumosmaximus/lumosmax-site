@@ -26,7 +26,7 @@ window.PROJECTS = [
     repo: "spectra",
     title: "Spectra 6 Converter",
     desc: "A browser app that dithers any photo down to six e-paper inks and exports a panel-ready file.",
-    cover: "docs/out-1.png",
+    cover: "docs/app.png",
     status: "done",
     categories: ["software", "embedded", "fun"],
     live: "https://lumosmaximus.github.io/spectra/",  // deployed tool, embedded on the project page
