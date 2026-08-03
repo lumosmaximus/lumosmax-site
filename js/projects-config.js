@@ -15,6 +15,10 @@
      url        Optional external link (used when there's no repo)
      related    Array of other repo names in this list. Shows a
                 "Related project" link on the detail page.
+     cover      Image path inside the repo, used as the card cover.
+     coverPos   Optional CSS object-position for that cover, e.g.
+                "center top". Useful when a tall image would
+                otherwise be cropped through its middle.
 
    To add a project: copy a line, set the repo + status + categories.
    ============================================================ */
@@ -27,6 +31,7 @@ window.PROJECTS = [
     title: "Spectra 6 Converter",
     desc: "A browser app that dithers any photo down to six e-paper inks and exports a panel-ready file.",
     cover: "docs/app.png",
+    coverPos: "center top",   // tall screenshot: keep the header, not the blank preview
     status: "done",
     categories: ["software", "embedded", "fun"],
     live: "https://lumosmaximus.github.io/spectra/",  // deployed tool, embedded on the project page

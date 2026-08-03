@@ -83,6 +83,9 @@
     // would sit there unloaded forever.) If it fails, drop back to the gradient.
     const img = document.createElement("img");
     img.alt = "";
+    // Tall images get cropped to the 16:10 card. `coverPos` picks which part
+    // survives: "top" keeps the header, default keeps the middle.
+    if (p.coverPos) img.style.objectPosition = p.coverPos;
     img.addEventListener("load", () => box.classList.add("has-img"));
     img.addEventListener("error", () => { img.remove(); box.classList.remove("has-img"); });
     img.src = src;
