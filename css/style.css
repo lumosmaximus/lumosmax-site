@@ -349,6 +349,8 @@ section h2 { font-size: 1.6rem; margin: 0 0 18px; letter-spacing: -0.01em; }
   color: #fff;
   font-size: 2rem;
 }
+.pcard-cover.has-img { background: var(--bg-soft); }
+.pcard-cover.has-img i { display: none; }
 .pcard-cover img { width: 100%; height: 100%; object-fit: cover; display: block; }
 .pcard-body { padding: 15px 17px; }
 .pcard-body h3 { margin: 0 0 9px; font-size: 1.05rem; }
@@ -444,6 +446,28 @@ section h2 { font-size: 1.6rem; margin: 0 0 18px; letter-spacing: -0.01em; }
 }
 .readme > p > img:only-child { border-radius: var(--radius); box-shadow: var(--shadow); }
 @media (max-width: 620px) { .readme table.img-table { border-spacing: 6px 8px; } }
+
+/* Related projects */
+.related { margin-top: 34px; }
+.related-card {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 15px 18px;
+  margin-bottom: 10px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  background: var(--bg-soft);
+  color: inherit;
+  transition: transform 0.18s ease, border-color 0.18s ease;
+}
+.related-card:hover { transform: translateY(-2px); border-color: var(--link); color: inherit; }
+.related-card > i:first-child { color: var(--link); font-size: 1.25rem; width: 26px; text-align: center; }
+.related-card span { display: flex; flex-direction: column; gap: 2px; min-width: 0; }
+.related-card strong { color: var(--heading); font-size: 1rem; }
+.related-card em { font-style: normal; color: var(--text-soft); font-size: 0.88rem; }
+.related-card .go { margin-left: auto; color: var(--text-soft); font-size: 0.85rem; }
+.related-card:hover .go { color: var(--link); }
 
 /* Before / after gallery */
 .gallery { margin: 6px 0 10px; }

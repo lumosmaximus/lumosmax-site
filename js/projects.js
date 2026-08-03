@@ -61,9 +61,28 @@
   }
 
   function primaryCat(cats) { return (cats && cats.find((c) => CATS[c])) || null; }
-  function coverHTML(cats) {
-    const c = CATS[primaryCat(cats)] || { icon: "fa-cube", c1: "#2d96bd", c2: "#ef3982" };
-    return `<div class="pcard-cover" style="--c1:${c.c1};--c2:${c.c2};"><i class="fa-solid ${c.icon}"></i></div>`;
+  function catStyle(cats) {
+    return CATS[primaryCat(cats)] || { icon: "fa-cube", c1: "#2d96bd", c2: "#ef3982" };
+  }
+  // Cover: a real image from the repo when `cover` is set, otherwise a gradient
+  // with the category icon. Broken images fall back to the gradient.
+  function coverHTML(p) {
+    const c = catStyle(p.categories);
+    return `<div class="pcard-cover" style="--c1:${c.c1};--c2:${c.c2};">` +
+           `<i class="fa-solid ${c.icon}"></i></div>`;
+  }
+  function attachCover(el, p) {
+    if (!p.cover || !p.repo) return;
+    const box = el.querySelector(".pcard-cover");
+    if (!box) return;
+    const src = /^https?:/.test(p.cover)
+      ? p.cover
+      : `https://raw.githubusercontent.com/${USER}/${p.repo}/HEAD/${p.cover.replace(/^\.?\//, "")}`;
+    const img = new Image();
+    img.loading = "lazy";
+    img.alt = "";
+    img.onload = () => { box.classList.add("has-img"); box.appendChild(img); };
+    img.src = src;   // on error we simply keep the gradient
   }
   function tagsHTML(cats) {
     return `<div class="pcard-tags">${(cats || []).map((c) => `<span>${(CATS[c] && CATS[c].label) || c}</span>`).join("")}</div>`;
@@ -108,9 +127,10 @@
         // initial content from config
         let title = p.title || p.repo || "Untitled";
         let desc = p.desc || "";
-        el.innerHTML = coverHTML(p.categories) +
+        el.innerHTML = coverHTML(p) +
           `<div class="pcard-body"><h3>${title}</h3><p class="pcard-desc">${desc}</p>${tagsHTML(p.categories)}</div>`;
         grid.appendChild(el);
+        attachCover(el, p);
 
         // enrich from GitHub if a repo is set
         if (p.repo) {
@@ -271,6 +291,29 @@
         bodyEl.innerHTML = r.description
           ? `<p>${r.description}</p><p><a href="${r.html_url}" target="_blank" rel="noopener">See the repository on GitHub →</a></p>`
           : `<p>No README yet. <a href="${r.html_url}" target="_blank" rel="noopener">See the repository on GitHub →</a></p>`;
+      }
+
+      // related projects
+      if (cfg.related && cfg.related.length) {
+        const items = cfg.related
+          .map((rp) => PROJECTS.find((p) => p.repo === rp))
+          .filter(Boolean);
+        if (items.length) {
+          const rel = document.createElement("div");
+          rel.className = "related";
+          rel.innerHTML =
+            `<h2 class="readme-heading">Related ${items.length > 1 ? "projects" : "project"}</h2>` +
+            items.map((p) => {
+              const c = (p.categories || []).find((x) => CATS[x]);
+              const ic = (CATS[c] && CATS[c].icon) || "fa-cube";
+              return `<a class="related-card" href="project.html?repo=${encodeURIComponent(p.repo)}">` +
+                `<i class="fa-solid ${ic}"></i>` +
+                `<span><strong>${p.title || p.repo}</strong>` +
+                (p.desc ? `<em>${p.desc}</em>` : "") + `</span>` +
+                `<i class="fa-solid fa-arrow-right go"></i></a>`;
+            }).join("");
+          bodyEl.appendChild(rel);
+        }
       }
     } catch (err) {
       titleEl.textContent = cfg.title || repo;
