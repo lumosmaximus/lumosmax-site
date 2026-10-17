@@ -39,6 +39,16 @@ window.PROJECTS = [
     related: ["eink-flipper-badge"],
   },
   {
+    repo: "lumo-watch",
+    title: "lumo-watch",
+    desc: "A dual-core Zephyr smartwatch with a 60 fps gliding second hand that doubles as a USB volume knob.",
+    cover: "docs/renders/gmt.png",
+    status: "brewing",
+    categories: ["embedded", "iot", "fun"],
+    // a real trace from the watch, playable: the viewer is one self-contained file
+    embed: "docs/data/traces/gmt_hands_cross.html",
+  },
+  {
     repo: "eink-flipper-badge",
     title: "E-Paper Badge for Flipper Zero",
     desc: "A wearable six-color e-paper badge with a bit-banged display driver written from the datasheet up.",
