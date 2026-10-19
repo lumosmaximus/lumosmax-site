@@ -715,3 +715,13 @@ footer.site .heart { color: var(--link-hover); }
   .toolbox { grid-template-columns: 1fr; gap: 2px; }
   .toolbox dd { margin-bottom: 10px; }
 }
+
+/* About: numbers strip, timeline headings, education line */
+.stats { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px 24px; padding: 6px 0 2px; }
+.stats div { border: 1px solid var(--border); border-radius: var(--radius); padding: 16px 18px; background: var(--bg-soft); }
+.stats b { display: block; font-size: 1.6rem; font-weight: 900; color: var(--link); line-height: 1.1; margin-bottom: 4px; }
+.stats span { color: var(--text-soft); font-size: 0.9rem; }
+.timeline .item { margin-bottom: 26px; }
+.timeline .item h3 { margin: 0 0 8px; font-size: 1.1rem; }
+.edu { margin-top: 6px; color: var(--text-soft); font-size: 0.9rem; font-family: var(--mono); }
+@media (max-width: 620px) { .stats { grid-template-columns: 1fr; } }

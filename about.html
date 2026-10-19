@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>About · Lumosmax</title>
-  <meta name="description" content="Adi: firmware and embedded systems engineer. Devices from bare PCB to production, and the measurements that prove they work." />
+  <meta name="description" content="Adi: embedded systems engineer, eight years across bare-metal and RTOS firmware, board bring-up and embedded Linux; currently running a fleet of 500+ edge gateways." />
   <meta name="theme-color" content="#2d96bd" />
   <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='70'>l</text></svg>" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -31,7 +31,7 @@
     <section class="profile compact reveal">
       <img class="avatar" src="assets/avatar.png" alt="adi" />
       <h1>adi</h1>
-      <p class="subtitle"><span data-typing='["I build the firmware inside devices that have to work.","Bare PCB to production, and the proof in between.","Measure first. Then make it fast."]'></span></p>
+      <p class="subtitle"><span data-typing='["Embedded systems engineer, eight years in.","Bare-metal and RTOS firmware, board bring-up, embedded Linux.","Currently keeping 500+ edge gateways honest."]'></span></p>
       <div class="socials">
         <a href="https://github.com/lumosmaximus" target="_blank" rel="noopener" aria-label="GitHub"><i class="fa-brands fa-github"></i></a>
         <a href="https://www.linkedin.com/in/doraditya" target="_blank" rel="noopener" aria-label="LinkedIn"><i class="fa-brands fa-linkedin"></i></a>
@@ -43,20 +43,36 @@
     <div class="wrap">
       <section class="about reveal" id="about">
         <p class="section-label">About</p>
-        <h2>I make hardware behave, and I can show you the numbers.</h2>
+        <h2>I make hardware behave in the field, and I can show you the numbers.</h2>
         <p>
-          I write the software that runs inside industrial and wireless devices: the drivers,
-          the real-time scheduling, the radio links and the recovery paths that keep a product
-          working after it has left the building. I have taken devices from a bare board to
-          production more than once, and spent the hard weeks in between on the field failures
-          nobody could reproduce.
+          Eight years of embedded systems work, from bare-metal and RTOS firmware on ARM
+          microcontrollers through board bring-up to embedded Linux. Today I own the firmware
+          and services layer for a fleet of more than 500 Debian edge gateways in production
+          across 30 remote sites in 20 states: provisioning, golden images, update and
+          rollback, remote diagnostics, and the root-cause work that cuts across hardware,
+          Linux, networking and protocols when something in the field misbehaves.
         </p>
         <p>
-          What I care about is evidence. A system is fast when the trace says so, reliable when
-          the logs from a year in the field say so, and finished when someone else can build it
-          from the repository. The projects on this site are built that way: every claim links
-          to a measurement.
+          Before that: instruments that had to meet functional-safety requirements, battery
+          tracking devices that had to last two years on a cell and pass FCC, and a LoRaWAN
+          stack I helped implement. What ties it together is evidence. A system is reliable
+          when a year of field logs says so, fast when the trace says so, and finished when
+          someone else can build it from the repository.
         </p>
+      </section>
+    </div>
+
+    <!-- ============ NUMBERS ============ -->
+    <div class="wrap">
+      <section class="reveal">
+        <div class="stats">
+          <div><b>500+</b><span>edge gateways in production, 30 sites, 20 states</span></div>
+          <div><b>~90%</b><span>fewer unplanned fleet events: 50-60 a week down to 4-5</span></div>
+          <div><b>150</b><span>industrial devices from 9 vendors integrated at the protocol level</span></div>
+          <div><b>600+</b><span>900 MHz radios configured and integrated</span></div>
+          <div><b>2+ yrs</b><span>battery life on LoRaWAN tracking devices</span></div>
+          <div><b>FCC</b><span>certification owned end to end, antenna redesigned to pass</span></div>
+        </div>
       </section>
     </div>
 
@@ -64,61 +80,57 @@
     <div class="wrap">
       <section class="reveal">
         <p class="section-label">Track record</p>
-        <h2>What I have done for devices</h2>
-        <div class="record">
-          <div class="rec">
-            <span class="rec-k">Shipped</span>
-            <p>Safety-critical instruments and battery-powered sensors that run for years on a cell,
-               taken from schematic review and board bring-up through production test rigs.</p>
+        <h2>Where the eight years went</h2>
+        <div class="timeline">
+          <div class="item">
+            <p class="meta">2024 - now · Embedded systems lead · industrial IoT, edge gateways</p>
+            <h3>A fleet that heals itself</h3>
+            <p>Own the services layer for 500+ Debian gateways: Losant provisioning, golden image builds,
+               configuration standards (udev serial naming, Docker Compose service layout, DNS), remote
+               diagnostics and recovery procedures. Redesigned the gateway services for self-healing on
+               connection loss, local-first logging to bound data loss, health telemetry where none existed,
+               and pattern-based alerting ahead of failures: unplanned events fell from 50-60 a week to 4-5,
+               and the rest are physical damage or site power. Built the acquisition services (Python,
+               systemd, Node-RED) for serial and network devices with validation, SQLite buffering, atomic
+               state files, MQTT routing, retries, watchdogs and fault states. Integrated ~150 devices from
+               9 vendors over Modbus TCP/RTU, EtherNet/IP, RS-232/485 and MQTT/Sparkplug B, and 600+
+               900 MHz radios. Delivered 22 sites and 15 distinct use-case integrations in a year, scoping
+               to handoff, coordinating R&amp;D, contractors and vendors. Led a 41-unit weather-transmitter
+               data-quality study across 31 sites, isolating 15 defective units from integration issues
+               and securing vendor RMAs.</p>
           </div>
-          <div class="rec">
-            <span class="rec-k">Kept running</span>
-            <p>Industrial gateways that acquire, validate and route data over Modbus, CAN and MQTT,
-               with the watchdogs, buffering and power-cycle recovery that turn a demo into a product.</p>
+          <div class="item">
+            <p class="meta">2020 - 2024 · Embedded software developer · industrial laser-spectroscopy instruments</p>
+            <h3>Bring-up, functional safety, and a chip shortage</h3>
+            <p>Led board bring-up, firmware and system debugging for monitoring and control hardware used
+               in production and in the field. When the original parts carried 24+ month lead times,
+               selected and qualified alternates with equivalence testing and updated firmware, hardware
+               and test procedures: the main board replacement shipped in 5 months against a 6-month
+               production window, the FPGA board in 12 against 18, with no production gap. Supported a
+               product designed to IEC 61508 parts 2 and 3: validation, documentation, diagnostics,
+               design reviews. Wrote RTOS and bare-metal firmware for ARM: drivers, interrupts, timers,
+               communication interfaces, control logic, production diagnostics. Built the automated
+               manufacturing, calibration and validation test systems.</p>
           </div>
-          <div class="rec">
-            <span class="rec-k">Found the bug</span>
-            <p>Field failures traced across hardware, firmware, Linux and the network with a scope,
-               a logic analyser, a packet capture and patience. Then designed out, not patched over.</p>
+          <div class="item">
+            <p class="meta">2018 - 2020 · Embedded firmware engineer · low-power wireless tracking devices</p>
+            <h3>Two years on a battery, and an antenna that passed</h3>
+            <p>Firmware for ARM-based LoRaWAN trackers used for refrigerated food monitoring: geofencing,
+               location, temperature logging, vibration detection, cloud upload. Integrated the radios,
+               sensors and local storage so data survived intermittent connectivity; implemented LoRaWAN
+               stack features and the gateway-side HTTP/MQTT access with the software team. Owned FCC
+               certification: diagnosed harmonic emissions from the in-house antenna during compliance
+               testing, redesigned it, and certified. Sleep states, sensor duty-cycling, communication
+               scheduling and power-budget analysis to reach 2+ years of battery life.</p>
           </div>
-          <div class="rec">
-            <span class="rec-k">Made it small</span>
-            <p>LoRaWAN and sub-GHz nodes where every microamp is budgeted, and on-device
-               classification so a sensor can decide locally instead of streaming everything upstream.</p>
+          <div class="item">
+            <p class="meta">2017 - 2018 · RF engineering intern · LPWAN devices</p>
+            <h3>Where it started</h3>
+            <p>Designed, tested and validated credit-card-sized sub-GHz LPWAN monitoring devices; range,
+               signal quality and RF noise work on the radio modules and circuits.</p>
           </div>
         </div>
-      </section>
-    </div>
-
-    <!-- ============ RECENT WORK ============ -->
-    <div class="wrap">
-      <section class="reveal">
-        <p class="section-label">Recent work</p>
-        <h2>Two projects, with the receipts</h2>
-        <div class="work">
-          <a class="work-card" href="project.html?repo=lumo-watch">
-            <div class="work-head"><i class="fa-solid fa-clock"></i><h3>lumo-watch</h3></div>
-            <p>A dual-core Zephyr smartwatch on a round AMOLED whose second hand glides at a locked
-               60 fps, and which doubles as a USB volume knob for the laptop.</p>
-            <ul class="work-facts">
-              <li>12 fps with a GUI library to 59, steady, with a hand-written compositor</li>
-              <li>Display writes 3.4 ms to 0.5 ms by driving the SPI and DMA from the registers</li>
-              <li>Every optimisation has a build switch and a before/after trace from the device</li>
-            </ul>
-            <span class="work-go">Read the write-up <i class="fa-solid fa-arrow-right"></i></span>
-          </a>
-          <a class="work-card" href="https://github.com/lumosmaximus/waveshare_esp32_s3_349_display" target="_blank" rel="noopener">
-            <div class="work-head"><i class="fa-solid fa-microphone"></i><h3>lumo-notes</h3></div>
-            <p>A pocket voice recorder with a puppy in it: notes and reminders by voice, transcribed
-               by Whisper on a laptop in the same room, with a meeting mode that transcribes live.</p>
-            <ul class="work-facts">
-              <li>Fifteen threads on one core, one owner per device, message passing only</li>
-              <li>Zero-copy audio: one buffer, three owners, two slots</li>
-              <li>A kernel-level tracer that animates buffers filling and threads taking turns</li>
-            </ul>
-            <span class="work-go">Repository <i class="fa-solid fa-arrow-up-right-from-square"></i></span>
-          </a>
-        </div>
+        <p class="edu">MS Electrical Engineering, University at Buffalo (SUNY), 2018 · BTech Electronics and Communication, SRM University, 2016</p>
       </section>
     </div>
 
@@ -129,21 +141,51 @@
         <h2>A few rules I keep coming back to</h2>
         <div class="rules">
           <div class="rule">
+            <h3>Bound the damage first.</h3>
+            <p>Local-first logging, atomic state files, watchdogs and recovery paths before features. A gateway that loses its link should lose nothing, and tell you about it when it is back.</p>
+          </div>
+          <div class="rule">
             <h3>Measure before you guess.</h3>
-            <p>Cycle counters, traces and captured logs first. The slow part is rarely where it feels like it is; the watch's display cost went from 315 to 107 cycles per pixel only after the numbers said where to look.</p>
+            <p>Field logs, bench tests, traces and cycle counters. The slow or broken part is rarely where it feels like it is; the fleet's alerting and the watch's 315 to 107 cycles per pixel both came from looking at the numbers first.</p>
           </div>
           <div class="rule">
-            <h3>One owner per device.</h3>
-            <p>A peripheral belongs to exactly one thread; everyone else sends it a message. It removes a whole class of bugs and makes the system drawable on one page.</p>
-          </div>
-          <div class="rule">
-            <h3>Design for the worst frame.</h3>
-            <p>Averages lie. A steady 30 looks better than an average 59 that stutters, so budgets are set on the worst case and the trace has to show it.</p>
+            <h3>Qualify, do not assume.</h3>
+            <p>Replacement parts, vendor claims and AI-generated register maps all get checked against live reads and bench tests before anything goes to production.</p>
           </div>
           <div class="rule">
             <h3>Write it down, with the data.</h3>
-            <p>Dead ends included. The write-ups here keep the raw captures next to the conclusions, so the next person, often me, can check the reasoning.</p>
+            <p>Procedures, configuration standards and write-ups that keep the raw evidence next to the conclusion, so the next engineer, often me, can check the reasoning.</p>
           </div>
+        </div>
+      </section>
+    </div>
+
+    <!-- ============ SIDE PROJECTS ============ -->
+    <div class="wrap">
+      <section class="reveal">
+        <p class="section-label">After hours</p>
+        <h2>Side projects, with the receipts</h2>
+        <div class="work">
+          <a class="work-card" href="project.html?repo=lumo-watch">
+            <div class="work-head"><i class="fa-solid fa-clock"></i><h3>lumo-watch</h3></div>
+            <p>A dual-core Zephyr smartwatch whose second hand glides at a locked 60 fps, and which
+               doubles as a USB volume knob for the laptop.</p>
+            <ul class="work-facts">
+              <li>12 fps with a GUI library to 59, steady; display writes 3.4 ms to 0.5 ms</li>
+              <li>Every optimisation has a build switch and a before/after trace from the device</li>
+            </ul>
+            <span class="work-go">Read the write-up <i class="fa-solid fa-arrow-right"></i></span>
+          </a>
+          <a class="work-card" href="https://github.com/lumosmaximus/waveshare_esp32_s3_349_display" target="_blank" rel="noopener">
+            <div class="work-head"><i class="fa-solid fa-microphone"></i><h3>lumo-notes</h3></div>
+            <p>A pocket voice recorder with a puppy in it: notes and reminders by voice, transcribed by
+               Whisper on a laptop in the same room, nothing leaving the house.</p>
+            <ul class="work-facts">
+              <li>Fifteen threads on one core, one owner per device, zero-copy audio</li>
+              <li>A kernel-level tracer that animates buffers filling and threads taking turns</li>
+            </ul>
+            <span class="work-go">Repository <i class="fa-solid fa-arrow-up-right-from-square"></i></span>
+          </a>
         </div>
       </section>
     </div>
@@ -154,13 +196,12 @@
         <p class="section-label">Toolbox</p>
         <h2>What I reach for</h2>
         <dl class="toolbox">
-          <dt>Microcontrollers</dt><dd>STM32 (M0 to M7), ESP32 family, MSP430/432, TI C2000, PIC18; ARM and Xtensa toolchains</dd>
-          <dt>Firmware</dt><dd>Zephyr RTOS, bare metal and other RTOSes; drivers, DMA, ISRs, board support; low-power design</dd>
-          <dt>Linux at the edge</dt><dd>Gateway applications, data acquisition and buffering, MQTT and Sparkplug, remote diagnostics</dd>
-          <dt>Connectivity</dt><dd>I2C, SPI, UART, CAN, USB device; RS-485 and Modbus; EtherNet/IP; Bluetooth LE; LoRaWAN, Sigfox, cellular</dd>
-          <dt>Signals &amp; control</dt><dd>High-rate ADC/DAC paths, PID loops, stepper drives, FFT and on-device ML classification</dd>
-          <dt>Bench</dt><dd>Oscilloscopes, logic and spectrum analysers, JTAG/SWD, protocol sniffers, Wireshark, SDR; schematic review and rework</dd>
-          <dt>Languages</dt><dd>C first; C++, Python for tooling and test rigs, Bash, JavaScript, MATLAB</dd>
+          <dt>Firmware</dt><dd>C and C++ on ARM Cortex-M; Zephyr, FreeRTOS and bare metal; peripheral drivers, ISRs, DMA, ADC/DAC, sensor interfaces, state machines, low-power design, board bring-up</dd>
+          <dt>Embedded Linux</dt><dd>Debian, Docker, systemd, udev, Node-RED, SQLite, Python, Bash, JavaScript, POSIX; golden images, provisioning, update and rollback</dd>
+          <dt>Connectivity</dt><dd>BLE, LoRaWAN, cellular/LTE, Wi-Fi; MQTT/Sparkplug B, HTTP/HTTPS, TCP/IP; Modbus TCP/RTU, EtherNet/IP, CAN, USB, RS-232/485; 900 MHz radio networks</dd>
+          <dt>Reliability</dt><dd>Self-healing services, local-first buffering, atomic state, watchdogs, retry logic, health telemetry, pattern-based alerting, remote diagnostics</dd>
+          <dt>Lab &amp; test</dt><dd>Oscilloscopes, logic and spectrum analysers, DMMs, JTAG/SWD, Wireshark, SDR; schematic review, PCB and assembly verification; manufacturing and calibration test automation; FCC compliance testing</dd>
+          <dt>Process</dt><dd>Functional safety (IEC 61508 parts 2 and 3) validation and documentation; component qualification; vendor and contractor coordination</dd>
         </dl>
       </section>
     </div>
