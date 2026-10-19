@@ -684,3 +684,34 @@ footer.site .heart { color: var(--link-hover); }
   .profile h1 { font-size: 1.6rem; }
   .avatar { width: 116px; height: 116px; }
 }
+
+/* ---------- About: track record, recent work, rules, toolbox ---------- */
+.record { display: grid; grid-template-columns: repeat(2, 1fr); gap: 18px 28px; }
+.rec { padding: 4px 0 4px 16px; border-left: 3px solid var(--link); }
+.rec-k { display: block; font-family: var(--mono); font-size: 0.78rem; letter-spacing: 0.06em; text-transform: uppercase; color: var(--link); margin-bottom: 6px; }
+.rec p { margin: 0; color: var(--text-soft); font-size: 0.95rem; }
+
+.work { display: grid; grid-template-columns: repeat(2, 1fr); gap: 20px; }
+.work-card { display: flex; flex-direction: column; gap: 10px; padding: 22px; border: 1px solid var(--border); border-radius: var(--radius); background: var(--bg-soft); color: inherit; text-decoration: none; transition: transform .15s ease, border-color .15s ease; }
+.work-card:hover { transform: translateY(-2px); border-color: var(--link); text-decoration: none; }
+.work-head { display: flex; align-items: center; gap: 10px; }
+.work-head i { color: var(--link); font-size: 1.1rem; }
+.work-head h3 { margin: 0; font-size: 1.1rem; }
+.work-card p { margin: 0; color: var(--text-soft); font-size: 0.94rem; }
+.work-facts { margin: 0; padding-left: 18px; color: var(--text); font-size: 0.9rem; }
+.work-facts li { margin: 4px 0; }
+.work-go { margin-top: auto; font-size: 0.9rem; color: var(--link); font-weight: 700; }
+
+.rules { display: grid; grid-template-columns: repeat(2, 1fr); gap: 18px 28px; }
+.rule h3 { margin: 0 0 6px; font-size: 1.02rem; }
+.rule p { margin: 0; color: var(--text-soft); font-size: 0.94rem; }
+
+.toolbox { display: grid; grid-template-columns: max-content 1fr; gap: 10px 22px; margin: 0; }
+.toolbox dt { font-family: var(--mono); font-size: 0.8rem; color: var(--link); padding-top: 3px; white-space: nowrap; }
+.toolbox dd { margin: 0; color: var(--text-soft); font-size: 0.94rem; }
+
+@media (max-width: 620px) {
+  .record, .work, .rules { grid-template-columns: 1fr; }
+  .toolbox { grid-template-columns: 1fr; gap: 2px; }
+  .toolbox dd { margin-bottom: 10px; }
+}
