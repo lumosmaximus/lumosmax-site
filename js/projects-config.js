@@ -47,6 +47,17 @@ window.PROJECTS = [
     categories: ["embedded", "iot", "fun"],
     // a real trace from the watch, playable: the viewer is one self-contained file
     embed: "docs/data/traces/gmt_hands_cross.html",
+    related: ["waveshare_esp32_s3_349_display"],
+  },
+  {
+    repo: "waveshare_esp32_s3_349_display",
+    title: "lumo-notes",
+    desc: "A pocket voice recorder with a puppy in it: notes and reminders by voice, Whisper transcription on your own laptop, live meeting transcripts.",
+    cover: "docs/renders/lumo-poses.png",
+    coverPos: "center",
+    status: "brewing",
+    categories: ["embedded", "iot", "software", "fun"],
+    related: ["lumo-watch"],
   },
   {
     repo: "eink-flipper-badge",
